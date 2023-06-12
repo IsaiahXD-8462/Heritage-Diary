@@ -13,5 +13,4 @@ class Diary(models.Model):
     weight = models.IntegerField()
     status_conditions = models.ForeignKey(User, related_name='diary_status_conditions', on_delete=models.CASCADE)
     life_experience = models.ForeignKey(User, related_name='diary_life_experience', on_delete=models.CASCADE)
-    DNA_profile = models.ForeignKey(User, related_name='diary_DNA', on_delete=models.CASCADE)
     isAccepted = models.BooleanField()
