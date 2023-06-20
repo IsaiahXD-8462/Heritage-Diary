@@ -1,10 +1,11 @@
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const SearchBar = (props) => {
     
     const [ profile, getprofile ] = useState ([]);
     
-    async function searchallmedia() {
+    async function searchallprofiles() {
         const response = await axios.get("http://127.0.0.1:8000/api/diaries/")
         try{
           getprofile(response.data)}
@@ -14,14 +15,10 @@ const SearchBar = (props) => {
       }
     
     return (         
-    <form onSubmit={searchallmedia}>
+    <form onSubmit={searchallprofiles}>
         <label>Search</label> 
-        <input placeholder="Type To Search..." type='text' onChange={(event) => setmedia(event.target.value)} />           
+        <input placeholder="Type To Search..." type='text' onChange={(event) => getprofile(event.target.value)} />           
         <button type='submit'>search</button>
-    <Routes>
-        <Route exact path="/search" element={<SearchPage />} />
-        <Route exact path="/video" element={<VideoPage />} />
-    </Routes>
     </form>
     );
 }
